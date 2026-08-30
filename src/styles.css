@@ -446,6 +446,24 @@ h1 {
 .privacy-icon svg { width: 48px; height: 48px; }
 .privacy-section h2 { margin-bottom: 18px; font-size: clamp(34px, 4vw, 54px); }
 .privacy-description { max-width: 720px; margin-bottom: 0; color: #625c4d; font-size: 17px; line-height: 1.7; }
+.privacy-policy-link {
+  width: fit-content;
+  margin-top: 28px;
+  padding: 15px 20px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--ink);
+  color: white;
+  font-weight: 750;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(50, 40, 19, 0.16);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.privacy-policy-link:hover { transform: translateY(-2px); box-shadow: 0 16px 28px rgba(50, 40, 19, 0.22); }
+.privacy-policy-link svg { width: 22px; height: 22px; }
+.privacy-policy-link svg:last-child { width: 18px; height: 18px; }
 
 footer {
   min-height: 230px;
@@ -548,6 +566,7 @@ footer > button {
   .story-copy { margin: 0 auto; }
   .privacy-section { grid-template-columns: 1fr; gap: 24px; text-align: center; }
   .privacy-icon { margin: 0 auto; }
+  .privacy-policy-link { margin-right: auto; margin-left: auto; }
   footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   footer > button { justify-self: center; }
 }

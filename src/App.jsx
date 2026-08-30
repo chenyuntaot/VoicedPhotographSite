@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
+  ArrowRight,
+  BookOpenText,
   Camera,
   Check,
   Headset,
@@ -371,6 +373,11 @@ export function App() {
             <p className="privacy-description">
               照片与录音优先保存在你的设备上。没有默认公开的主页，也不会要求你先注册账号才能开始记录。
             </p>
+            <a className="privacy-policy-link" href={asset("privacy/")}>
+              <BookOpenText weight="duotone" aria-hidden="true" />
+              <span>阅读完整隐私政策</span>
+              <ArrowRight aria-hidden="true" />
+            </a>
           </div>
         </section>
       </main>
