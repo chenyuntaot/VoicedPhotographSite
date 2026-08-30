@@ -119,6 +119,7 @@ h1 {
 }
 .download-button:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(114, 81, 11, 0.2); }
 .download-button svg { width: 30px; height: 30px; }
+.download-button .apple-mark { flex: 0 0 auto; overflow: visible; }
 .download-button span { display: grid; text-align: left; line-height: 1.15; }
 .download-button small { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 3px; }
 .iphone-label { margin: 14px 0 0 14px; color: #8d8779; font-size: 14px; }
@@ -401,7 +402,22 @@ h1 {
 }
 .privacy-icon svg { width: 48px; height: 48px; }
 .privacy-section h2 { margin-bottom: 18px; font-size: clamp(34px, 4vw, 54px); }
-.privacy-section p:last-child { max-width: 720px; margin-bottom: 0; color: #625c4d; font-size: 17px; line-height: 1.7; }
+.privacy-description { max-width: 720px; margin-bottom: 0; color: #625c4d; font-size: 17px; line-height: 1.7; }
+.developer-info {
+  width: fit-content;
+  margin-top: 26px;
+  padding: 16px 20px;
+  border: 1px solid rgba(79, 57, 30, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 253, 247, 0.5);
+  color: #514b3f;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.7;
+}
+.developer-info p { margin: 0; }
+.developer-info a { color: inherit; text-decoration-color: rgba(81, 75, 63, 0.45); text-underline-offset: 3px; }
+.developer-info a:hover { text-decoration-color: currentColor; }
 
 footer {
   min-height: 230px;
@@ -503,6 +519,7 @@ footer > button {
   .story-copy { margin: 0 auto; }
   .privacy-section { grid-template-columns: 1fr; gap: 24px; text-align: center; }
   .privacy-icon { margin: 0 auto; }
+  .developer-info { margin-right: auto; margin-left: auto; text-align: left; }
   footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   footer > button { justify-self: center; }
 }

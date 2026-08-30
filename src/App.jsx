@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  AppleLogo,
   ArrowDown,
   Camera,
   Check,
@@ -15,6 +14,20 @@ import {
 } from "@phosphor-icons/react";
 
 const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
+
+function AppleMark() {
+  return (
+    <svg
+      className="apple-mark"
+      viewBox="0 0 384 512"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.9 4.9 54.7 14.7 83.4 13.1 36.7 60.2 126.7 107.2 125.2 24.6-.6 42-17.5 74.2-17.5 31.2 0 47.3 17.5 74.8 17.5 47.4-.7 89.2-82.5 101.6-119.3-63.5-29.9-60.1-86.5-60.1-88.3 0-2 .1-3.9.3-5.8ZM260.2 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z" />
+    </svg>
+  );
+}
 
 const boardMemories = [
   {
@@ -195,7 +208,7 @@ export function App() {
               多年以后，照片依然有声音。
             </p>
             <button className="download-button" onClick={() => setDialogOpen(true)}>
-              <AppleLogo weight="fill" />
+              <AppleMark />
               <span>
                 <small>即将上架</small>
                 App Store
@@ -335,12 +348,23 @@ export function App() {
           <div className="privacy-icon">
             <LockKey weight="duotone" />
           </div>
-          <div>
+          <div className="privacy-copy">
             <p className="eyebrow">你的回忆，默认只属于你</p>
             <h2 id="privacy-title">先保存在本机，再决定是否分享</h2>
-            <p>
+            <p className="privacy-description">
               照片与录音优先保存在你的设备上。没有默认公开的主页，也不会要求你先注册账号才能开始记录。
             </p>
+            <address className="developer-info">
+              <p>
+                开发者／个人信息处理者：<strong>陈云涛</strong>
+              </p>
+              <p>
+                联系邮箱：
+                <a href="mailto:chenyuntao020123@163.com">
+                  <strong>chenyuntao020123@163.com</strong>
+                </a>
+              </p>
+            </address>
           </div>
         </section>
       </main>
