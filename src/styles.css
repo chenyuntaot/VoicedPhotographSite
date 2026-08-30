@@ -61,6 +61,13 @@ nav a::after {
   transition: right 180ms ease;
 }
 nav a:hover::after { right: 0; }
+.support-nav-link {
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+}
+.support-nav-link::after { display: none; }
 
 .hero {
   width: min(1380px, calc(100% - 32px));
@@ -101,6 +108,42 @@ h1 {
   z-index: -1;
 }
 .hero-description { color: #615d53; font-size: 20px; line-height: 1.8; margin-bottom: 32px; }
+.hero-support-card {
+  width: min(500px, 100%);
+  margin: 0 0 24px;
+  padding: 20px 22px;
+  border: 1px solid rgba(95, 70, 17, 0.15);
+  border-left: 6px solid #d75f89;
+  border-radius: 18px;
+  background: rgba(255, 253, 247, 0.92);
+  box-shadow: 0 14px 30px rgba(75, 53, 15, 0.12);
+  color: #514b3f;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 1.7;
+  text-align: left;
+}
+.hero-support-card p { margin: 0; }
+.hero-support-card p + p { margin-top: 4px; }
+.support-card-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px !important;
+  color: #9f3659;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.support-card-label svg { width: 23px; height: 23px; }
+.hero-support-card strong { color: var(--ink); font-size: 16px; }
+.hero-support-card a {
+  color: inherit;
+  text-decoration-color: rgba(41, 40, 32, 0.42);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.hero-support-card a:hover { text-decoration-color: currentColor; }
 .download-button {
   min-width: 238px;
   min-height: 76px;
@@ -403,21 +446,6 @@ h1 {
 .privacy-icon svg { width: 48px; height: 48px; }
 .privacy-section h2 { margin-bottom: 18px; font-size: clamp(34px, 4vw, 54px); }
 .privacy-description { max-width: 720px; margin-bottom: 0; color: #625c4d; font-size: 17px; line-height: 1.7; }
-.developer-info {
-  width: fit-content;
-  margin-top: 26px;
-  padding: 16px 20px;
-  border: 1px solid rgba(79, 57, 30, 0.14);
-  border-radius: 16px;
-  background: rgba(255, 253, 247, 0.5);
-  color: #514b3f;
-  font-size: 14px;
-  font-style: normal;
-  line-height: 1.7;
-}
-.developer-info p { margin: 0; }
-.developer-info a { color: inherit; text-decoration-color: rgba(81, 75, 63, 0.45); text-underline-offset: 3px; }
-.developer-info a:hover { text-decoration-color: currentColor; }
 
 footer {
   min-height: 230px;
@@ -509,6 +537,7 @@ footer > button {
   .hero { width: 100%; min-height: 0; grid-template-columns: 1fr; padding: 64px 0 90px; }
   .hero-copy { max-width: 680px; padding: 0 28px; text-align: center; }
   h1 { font-size: clamp(50px, 11vw, 74px); }
+  .hero-support-card { margin-right: auto; margin-left: auto; }
   .download-button { min-width: 220px; }
   .iphone-label { margin-left: 0; }
   .scroll-cue { margin: 34px auto 0; }
@@ -519,7 +548,6 @@ footer > button {
   .story-copy { margin: 0 auto; }
   .privacy-section { grid-template-columns: 1fr; gap: 24px; text-align: center; }
   .privacy-icon { margin: 0 auto; }
-  .developer-info { margin-right: auto; margin-left: auto; text-align: left; }
   footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   footer > button { justify-self: center; }
 }
@@ -528,12 +556,14 @@ footer > button {
   .site-header { width: calc(100% - 28px); height: 78px; }
   .brand { gap: 8px; font-size: 17px; }
   .brand img { width: 46px; height: 36px; }
-  nav a:nth-child(2) { display: none; }
+  nav a:nth-child(2), nav a:nth-child(3) { display: none; }
   nav { gap: 16px; font-size: 13px; }
   .hero { padding-top: 42px; }
   .hero-copy { padding: 0 20px; }
   h1 { margin-bottom: 22px; font-size: clamp(42px, 13vw, 58px); line-height: 1.16; }
   .hero-description { font-size: 16px; line-height: 1.75; }
+  .hero-support-card { padding: 17px 16px; font-size: 13px; }
+  .hero-support-card strong { font-size: 14px; }
   .hero-visual { min-height: 600px; margin-top: 22px; }
   .board-frame {
     height: 570px;
