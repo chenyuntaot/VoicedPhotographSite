@@ -23,7 +23,7 @@ body {
 main { overflow: hidden; }
 button, a { font: inherit; }
 button { color: inherit; }
-button:focus-visible, a:focus-visible { outline: 3px solid #2382df; outline-offset: 4px; }
+button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #2382df; outline-offset: 4px; }
 img { display: block; max-width: 100%; }
 h1, h2, p { margin-top: 0; }
 
@@ -48,9 +48,9 @@ h1, h2, p { margin-top: 0; }
   letter-spacing: -0.02em;
 }
 .brand img { width: 66px; height: 48px; object-fit: contain; }
-nav { display: flex; gap: 42px; }
-nav a { color: var(--ink); text-decoration: none; font-weight: 600; position: relative; }
-nav a::after {
+.site-nav { display: flex; align-items: center; gap: 42px; }
+.site-nav > a { color: var(--ink); text-decoration: none; font-weight: 600; position: relative; }
+.site-nav > a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -60,14 +60,59 @@ nav a::after {
   background: var(--ink);
   transition: right 180ms ease;
 }
-nav a:hover::after { right: 0; }
+.site-nav > a:hover::after { right: 0; }
+.support-menu { position: relative; }
 .support-nav-link {
-  padding: 9px 15px;
+  padding: 10px 15px;
   border-radius: 999px;
   background: var(--ink);
   color: white;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
 }
-.support-nav-link::after { display: none; }
+.support-nav-link::-webkit-details-marker { display: none; }
+.support-nav-link > svg:first-child { width: 19px; height: 19px; }
+.support-nav-arrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 180ms ease;
+}
+.support-menu[open] .support-nav-arrow { transform: rotate(180deg); }
+.support-popover {
+  position: absolute;
+  width: min(370px, calc(100vw - 32px));
+  right: 0;
+  top: calc(100% + 16px);
+  padding: 22px 24px;
+  border: 1px solid rgba(95, 70, 17, 0.15);
+  border-top: 5px solid #d75f89;
+  border-radius: 18px;
+  background: rgba(255, 253, 247, 0.98);
+  box-shadow: 0 18px 45px rgba(75, 53, 15, 0.18);
+  color: #514b3f;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.7;
+}
+.support-popover p { margin: 0; }
+.support-popover p + p { margin-top: 7px; }
+.support-popover-label {
+  color: #9f3659;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.support-popover strong { color: var(--ink); }
+.support-popover a {
+  color: var(--ink);
+  font-weight: 700;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
 
 .hero {
   width: min(1380px, calc(100% - 32px));
@@ -108,42 +153,6 @@ h1 {
   z-index: -1;
 }
 .hero-description { color: #615d53; font-size: 20px; line-height: 1.8; margin-bottom: 32px; }
-.hero-support-card {
-  width: min(500px, 100%);
-  margin: 0 0 24px;
-  padding: 20px 22px;
-  border: 1px solid rgba(95, 70, 17, 0.15);
-  border-left: 6px solid #d75f89;
-  border-radius: 18px;
-  background: rgba(255, 253, 247, 0.92);
-  box-shadow: 0 14px 30px rgba(75, 53, 15, 0.12);
-  color: #514b3f;
-  font-size: 15px;
-  font-style: normal;
-  line-height: 1.7;
-  text-align: left;
-}
-.hero-support-card p { margin: 0; }
-.hero-support-card p + p { margin-top: 4px; }
-.support-card-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px !important;
-  color: #9f3659;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
-.support-card-label svg { width: 23px; height: 23px; }
-.hero-support-card strong { color: var(--ink); font-size: 16px; }
-.hero-support-card a {
-  color: inherit;
-  text-decoration-color: rgba(41, 40, 32, 0.42);
-  text-underline-offset: 3px;
-  overflow-wrap: anywhere;
-}
-.hero-support-card a:hover { text-decoration-color: currentColor; }
 .download-button {
   min-width: 238px;
   min-height: 76px;
@@ -166,19 +175,6 @@ h1 {
 .download-button span { display: grid; text-align: left; line-height: 1.15; }
 .download-button small { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 3px; }
 .iphone-label { margin: 14px 0 0 14px; color: #8d8779; font-size: 14px; }
-.scroll-cue {
-  width: max-content;
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: #7b7568;
-  font-size: 13px;
-  text-decoration: none;
-}
-.scroll-cue svg { animation: cue 1.8s ease-in-out infinite; }
-@keyframes cue { 50% { transform: translateY(5px); } }
-
 .hero-visual { min-height: 790px; position: relative; }
 .board-frame {
   position: absolute;
@@ -551,14 +547,12 @@ footer > button {
   .site-header { width: min(100% - 36px, 720px); height: 88px; }
   .brand { font-size: 20px; }
   .brand img { width: 56px; }
-  nav { gap: 20px; font-size: 14px; }
+  .site-nav { gap: 20px; font-size: 14px; }
   .hero { width: 100%; min-height: 0; grid-template-columns: 1fr; padding: 64px 0 90px; }
   .hero-copy { max-width: 680px; padding: 0 28px; text-align: center; }
   h1 { font-size: clamp(50px, 11vw, 74px); }
-  .hero-support-card { margin-right: auto; margin-left: auto; }
   .download-button { min-width: 220px; }
   .iphone-label { margin-left: 0; }
-  .scroll-cue { margin: 34px auto 0; }
   .hero-visual { min-height: 740px; margin-top: 48px; }
   .board-frame { width: 91%; right: -4%; border-radius: 54px 0 0 54px; }
   .memory-couple { left: 4%; }
@@ -575,14 +569,14 @@ footer > button {
   .site-header { width: calc(100% - 28px); height: 78px; }
   .brand { gap: 8px; font-size: 17px; }
   .brand img { width: 46px; height: 36px; }
-  nav a:nth-child(2), nav a:nth-child(3) { display: none; }
-  nav { gap: 16px; font-size: 13px; }
+  .site-nav > a { display: none; }
+  .site-nav { gap: 0; font-size: 13px; }
+  .support-nav-link { padding: 9px 12px; }
+  .support-popover { padding: 19px 20px; font-size: 13px; }
   .hero { padding-top: 42px; }
   .hero-copy { padding: 0 20px; }
   h1 { margin-bottom: 22px; font-size: clamp(42px, 13vw, 58px); line-height: 1.16; }
   .hero-description { font-size: 16px; line-height: 1.75; }
-  .hero-support-card { padding: 17px 16px; font-size: 13px; }
-  .hero-support-card strong { font-size: 14px; }
   .hero-visual { min-height: 600px; margin-top: 22px; }
   .board-frame {
     height: 570px;

@@ -189,11 +189,29 @@ export function App() {
           <img src={asset("assets/app-icon.webp")} alt="" />
           <span>留声相册</span>
         </a>
-        <nav aria-label="主导航">
-          <a className="support-nav-link" href="#support">技术支持</a>
+        <nav className="site-nav" aria-label="主导航">
           <a href="#story">故事</a>
           <a href="#app">界面</a>
           <a href="#privacy">隐私</a>
+          <details className="support-menu">
+            <summary className="support-nav-link">
+              <Headset weight="duotone" aria-hidden="true" />
+              <span>技术支持</span>
+              <ArrowDown className="support-nav-arrow" aria-hidden="true" />
+            </summary>
+            <address className="support-popover" id="support" aria-label="技术支持联系方式">
+              <p className="support-popover-label">技术支持</p>
+              <p>
+                开发者／个人信息处理者：<strong>陈云涛</strong>
+              </p>
+              <p>
+                联系邮箱：
+                <a href="mailto:chenyuntao020123@163.com">
+                  chenyuntao020123@163.com
+                </a>
+              </p>
+            </address>
+          </details>
         </nav>
       </header>
 
@@ -211,21 +229,6 @@ export function App() {
               <br />
               多年以后，照片依然有声音。
             </p>
-            <address className="hero-support-card" id="support" aria-labelledby="support-card-title">
-              <p className="support-card-label" id="support-card-title">
-                <Headset weight="duotone" aria-hidden="true" />
-                技术支持
-              </p>
-              <p>
-                开发者／个人信息处理者：<strong>陈云涛</strong>
-              </p>
-              <p>
-                联系邮箱：
-                <a href="mailto:chenyuntao020123@163.com">
-                  <strong>chenyuntao020123@163.com</strong>
-                </a>
-              </p>
-            </address>
             <button className="download-button" onClick={() => setDialogOpen(true)}>
               <AppleMark />
               <span>
@@ -234,10 +237,6 @@ export function App() {
               </span>
             </button>
             <p className="iphone-label">为 iPhone 设计</p>
-            <a className="scroll-cue" href="#support">
-              获取技术支持
-              <ArrowDown />
-            </a>
           </div>
 
           <div className="hero-visual" aria-label="照片和声音组成的记忆墙">
